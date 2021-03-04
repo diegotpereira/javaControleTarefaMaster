@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +10,6 @@
 </head>
 <body>
      Nova tarefa adicionada com sucesso!
+     <fmt:message key="tarefa.adicionada.com.sucesso"/>
 </body>
 </html>

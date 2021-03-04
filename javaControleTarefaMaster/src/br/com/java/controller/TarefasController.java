@@ -1,6 +1,9 @@
 package br.com.java.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.java.dao.TarefaDao;
@@ -15,7 +18,10 @@ public class TarefasController {
 	}
 	
 	@RequestMapping("adicionaTarefa")
-	public String adiciona(Tarefa tarefa) {
+	public String adiciona(@Valid Tarefa tarefa, BindingResult result) {
+		if (result.hasFieldErrors("descricao")) {
+			return "tarefa/formulario";
+		}
 		TarefaDao dao = new TarefaDao();
 		dao.adiciona(tarefa);
 		return "tarefa/adicionada";

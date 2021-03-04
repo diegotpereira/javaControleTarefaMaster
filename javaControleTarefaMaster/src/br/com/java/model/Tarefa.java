@@ -17,8 +17,9 @@ public class Tarefa {
 	@GeneratedValue
 	private Long id;
 	
-	@NotNull @Size(min=5)
+	@NotNull @Size(min=5, message="Descrição deve ter pelo menos 5 carateres")
 	private String descricao;
+	
 	private boolean finalizado;
 	
 	@Temporal(TemporalType.DATE)
