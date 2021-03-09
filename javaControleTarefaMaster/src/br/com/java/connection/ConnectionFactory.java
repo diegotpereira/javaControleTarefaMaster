@@ -3,37 +3,37 @@ package br.com.java.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConnectionFactory {
-	
-	private static Connection conn=null;
-	public static Connection getConnection()
-	{
-		if(conn !=null) //if there is a connection already return it, otherwise establish one 
-			return conn;
-		else
-		{
-			try
-			{
-				String url = "jdbc:mysql://localhost:3306/db_controle_tarefa?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
-		       
-				String driver = "com.mysql.cj.jdbc.Driver";
-				String username= "root";
-				String password= "root";
-				Class.forName(driver);
-				conn = DriverManager.getConnection(url,username,password);
-			}
-			catch (ClassNotFoundException e) 
-			{
-                e.printStackTrace();
-            }
-			catch (SQLException e) 
-			{
-                e.printStackTrace();
-		
-			}
-			return conn;
+
+	public static Connection con = null;
+
+	public static Connection getConnection() {
+
+		System.out.println("Conectando ao banco...");
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/db_controle_tarefa?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false",
+					"root", "root");
+
+			System.out.println("Conectado.");
+
+		} catch (ClassNotFoundException ex) {
+			System.out.println("Classe não encontrada, adicione o driver nas bibliotecas.");
+
+			Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (SQLException e) {
+			System.out.println(e);
+
+			throw new RuntimeException(e);
 		}
+		return con;
 		
 	}
+
 }
