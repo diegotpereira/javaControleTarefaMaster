@@ -9,7 +9,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lista de Tarefas Adicionadas</title>
-<link rel="stylesheet" type="text/css" href="./resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script type="text/javascript" src="resources/js/jquery-1.11.3.js"></script>
 </head>
 <body>
@@ -33,42 +34,47 @@
 	<br />
 
 	<table>
-		<tr>
-			<td>Id</td>
-			<td>Descrição</td>
-			<td>Finalizado?</td>
-			<td>Data Finalização</td>
-		</tr>
-		<c:forEach items="${tarefas}" var="tarefa">
+	      <tr>
+				<th>ID</th>
+				<th>Descrição</th>
+				<th>Finalizado?</th>
+				<th>Data Finalizacao</th>
+			</tr>
+			<c:forEach items="${tarefas}" var="tarefa">
 			<tr>
-				<td>${tarefa.id }</td>
-				<td>${tarefa.descricao }</td>
-
-				<c:if test="${ tarefa.finalizado eq false }">
-					<td id="tarefa_ ${ tarefa.id }"><a href="#"
-						onClick="finalizaAgora(${ tarefa.id})">Finalizar Agora!</a></td>
+				<td>${tarefa.id}</td>
+				<td>${tarefa.descricao}</td>
+				
+				<c:if test="${tarefa.finalizado eq false }">
+					<td id="tarefa_${tarefa.id }">
+					<a href="#" onClick="finalizaAgora(${tarefa.id})">Finalizar Agora!</a>
+					</td>
 				</c:if>
-
+							
 				<c:if test="${tarefa.finalizado eq true }">
 					<td>Finalizado</td>
 				</c:if>
-
-				<c:choose>
-					<c:when test="${ empty tarefa.dataFinalizacao }">
+				
+				<!-- Verificar se a data é nula  -->
+				<c:choose> 
+					<c:when test="${empty tarefa.dataFinalizacao }">
 						<td></td>
 					</c:when>
-
 					<c:otherwise>
-						<td><fmt:formatDate value="${ tarefa.dataFinalizacao.time }"
-								pattern="dd/MM/yyyy" /></td>
+						<td>
+							<fmt:formatDate value="${tarefa.dataFinalizacao.time}" pattern="dd/MM/yyyy"/>
+						</td>
 					</c:otherwise>
 				</c:choose>
-
-				<td><a href="#" onClick="removeTarefa(${tarefa.id})">Finalizar</a>
-				<td><a href="alterarVisualizar?id=${tarefa.id }">Alterar</a>
+				<!--  
+				<td><a href="removeTarefa?id=${tarefa.id}">Remover</a></td>
+				 -->
+				<td><a href="#" onClick="removeTarefa(${tarefa.id})">Remover</a></td> 
+				
+				<td><a href="alteraVisualizar?id=${tarefa.id}">Alterar</a>
 			</tr>
-
-		</c:forEach>
+			
+			</c:forEach>
 	</table>
 
 </body>
