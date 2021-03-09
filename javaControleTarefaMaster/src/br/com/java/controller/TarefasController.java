@@ -3,6 +3,7 @@ package br.com.java.controller;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,4 +27,11 @@ public class TarefasController {
 		dao.adiciona(tarefa);
 		return "tarefa/adicionada";
 	}
+	@RequestMapping("listaTarefa")
+	public String lista(Model model) {
+		TarefaDao dao = new TarefaDao();
+		model.addAttribute("tarefas", dao.getListaTarefa());
+		return "tarefa/lista";
+	}
+	
 }
