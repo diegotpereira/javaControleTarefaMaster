@@ -102,7 +102,7 @@ public class TarefaDao {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, tarefa.getDescricao());
 			stmt.setBoolean(2, tarefa.isFinalizado());
-			stmt.setDate(3, tarefa.getDataFinalizacao() != null ? new Date(tarefa.getDataFinalizacao().getTimeInMillis()): null);
+			stmt.setDate(3, tarefa.getDataFinalizacao() != null ? new Date(tarefa.getDataFinalizacao().getTimeInMillis()) : null);
 			stmt.setLong(4, tarefa.getId());
 			stmt.execute();
 		} catch (SQLException e) {
