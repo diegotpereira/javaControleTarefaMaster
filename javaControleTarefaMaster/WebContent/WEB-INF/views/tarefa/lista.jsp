@@ -33,46 +33,52 @@
 	<br />
 	<br />
 
-	<table>
-	      <tr>
-				<th>ID</th>
-				<th>Descrição</th>
-				<th>Finalizado?</th>
-				<th>Data Finalizacao</th>
-			</tr>
-			<c:forEach items="${tarefas}" var="tarefa">
-			<tr>
-				<td>${tarefa.id}</td>
-				<td>${tarefa.descricao}</td>
-				
-				<c:if test="${tarefa.finalizado eq false }">
-					<td id="tarefa_${tarefa.id }">
-					<a href="#" onClick="finalizaAgora(${tarefa.id})">Finalizar Agora!</a>
-					</td>
-				</c:if>
-							
-				<c:if test="${tarefa.finalizado eq true }">
-					<td>Finalizado</td>
-				</c:if>
-				
-				<!-- Verificar se a data é nula  -->
-				<c:choose> 
-					<c:when test="${empty tarefa.dataFinalizacao }">
-						<td></td>
-					</c:when>
-					<c:otherwise>
-						<td>
-							<fmt:formatDate value="${tarefa.dataFinalizacao.time}" pattern="dd/MM/yyyy"/>
-						</td>
-					</c:otherwise>
-				</c:choose>
-				
-				<td><a href="mostraTarefa?id=${tarefa.id}">Alterar</a></td>
-				<td><a href="removeTarefa?id=${tarefa.id}">Remover</a></td>
-			</tr>
-			
-			</c:forEach>
-	</table>
+	<div class="container">
+		<div class="table-responsive">
+			<table>
+			  <thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Descrição</th>
+						<th scope="col">Finalizado?</th>
+						<th scope="col">Data Finalizacao</th>
+					</tr>
+			   </thead>	
+				<c:forEach items="${tarefas}" var="tarefa">
+					<tr>
+						<td>${tarefa.id}</td>
+						<td>${tarefa.descricao}</td>
+
+						<c:if test="${tarefa.finalizado eq false }">
+							<td id="tarefa_${tarefa.id }"><a href="#"
+								onClick="finalizaAgora(${tarefa.id})">Finalizar Agora!</a></td>
+						</c:if>
+
+						<c:if test="${tarefa.finalizado eq true }">
+							<td>Finalizado</td>
+						</c:if>
+
+						<!-- Verificar se a data é nula  -->
+						<c:choose>
+							<c:when test="${empty tarefa.dataFinalizacao }">
+								<td></td>
+							</c:when>
+							<c:otherwise>
+								<td><fmt:formatDate value="${tarefa.dataFinalizacao.time}"
+										pattern="dd/MM/yyyy" /></td>
+							</c:otherwise>
+						</c:choose>
+                        
+						<td><input type="button" name="btnAlterar" id="" onClick="mostraTarefa?id=${tarefa.id}"/>Alterar
+						<input type="button" name="btnRemover" id="" onClick="removeTarefa?id=${tarefa.id}"/>Remover</td>
+					</tr>
+
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+
+
 
 </body>
 </html>
