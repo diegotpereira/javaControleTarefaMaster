@@ -66,12 +66,9 @@
 						</td>
 					</c:otherwise>
 				</c:choose>
-				<!--  
-				<td><a href="removeTarefa?id=${tarefa.id}">Remover</a></td>
-				 -->
-				<td><a href="#" onClick="removeTarefa(${tarefa.id})">Remover</a></td> 
 				
-				<td><a href="alteraVisualizar?id=${tarefa.id}">Alterar</a>
+				<td><a href="mostraTarefa?id=${tarefa.id}">Alterar</a></td>
+				<td><a href="removeTarefa?id=${tarefa.id}">Remover</a></td>
 			</tr>
 			
 			</c:forEach>
