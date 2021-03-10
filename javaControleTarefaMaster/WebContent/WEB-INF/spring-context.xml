@@ -33,11 +33,14 @@
 		/> -->
 	<!-- </mvc:interceptors> -->
 
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
-	<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
-	<!-- <property name="url" value="jdbc:mysql://localhost/CRUDTarefas"/> -->
-	<!-- <property name="username" value="root"/> -->
-	<!-- <property name="password" value="admin"/> -->
-	<!-- </bean> -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost/db_controle_tarefa" />
+		<property name="username" value="root" />
+		<property name="password" value="admin" />
+	</bean>
 
 </beans>
