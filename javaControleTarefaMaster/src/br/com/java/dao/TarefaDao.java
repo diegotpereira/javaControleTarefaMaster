@@ -45,7 +45,7 @@ public class TarefaDao {
 			
 			String sql = "SELECT * FROM Tarefas";
 			
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			PreparedStatement stmt = connection.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
 			ResultSet rs = stmt.executeQuery();
 			
