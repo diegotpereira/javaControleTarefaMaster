@@ -38,10 +38,10 @@
 			<table>
 				<thead>
 					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">Descrição</th>
-						<th scope="col">Finalizado?</th>
-						<th scope="col">Data Finalizacao</th>
+						<td>ID</td>
+						<td>Descrição</td>
+						<td> Finalizado?</td>
+						<td> Data Finalizacao</td>
 					</tr>
 				</thead>
 				<c:forEach items="${tarefas}" var="tarefa">
