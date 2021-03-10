@@ -36,14 +36,14 @@
 	<div class="container">
 		<div class="table-responsive">
 			<table>
-			  <thead>
+				<thead>
 					<tr>
 						<th scope="col">ID</th>
 						<th scope="col">Descrição</th>
 						<th scope="col">Finalizado?</th>
 						<th scope="col">Data Finalizacao</th>
 					</tr>
-			   </thead>	
+				</thead>
 				<c:forEach items="${tarefas}" var="tarefa">
 					<tr>
 						<td>${tarefa.id}</td>
@@ -51,7 +51,7 @@
 
 						<c:if test="${tarefa.finalizado eq false }">
 							<td id="tarefa_${tarefa.id }"><a href="#"
-								onClick="finalizaAgora(${tarefa.id})">Finalizar Agora!</a></td>
+								onClick="finalizaAgora(${tarefa.id})">Finalizar!</a></td>
 						</c:if>
 
 						<c:if test="${tarefa.finalizado eq true }">
@@ -68,9 +68,11 @@
 										pattern="dd/MM/yyyy" /></td>
 							</c:otherwise>
 						</c:choose>
-                        
-						<td><input type="button" name="btnAlterar" id="" onClick="mostraTarefa?id=${tarefa.id}"/>Alterar
-						<input type="button" name="btnRemover" id="" onClick="removeTarefa?id=${tarefa.id}"/>Remover</td>
+
+						<td><a href="removeTarefa?id=${tarefa.id}"
+							class="btn btn-danger custom-width">Remover</a></td>
+						<td><a href="mostraTarefa?id=${tarefa.id}"
+							class="btn btn-success custom-width">Alterar</a></td>
 					</tr>
 
 				</c:forEach>

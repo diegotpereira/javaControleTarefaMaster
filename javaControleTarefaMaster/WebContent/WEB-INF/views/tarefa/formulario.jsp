@@ -16,7 +16,7 @@
 	  <br/>
 	  <form:errors path="tarefa.descricao" cssStyle="color:red"/>
 	  <br/>
-	  <input type="submit" value="Adicionar">
+	  <input class="btn btn-success" type="submit" value="Adicionar">
 	  </form>
 
 </body>
